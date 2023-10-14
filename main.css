@@ -1,0 +1,173 @@
+/*全体の配置*/
+.container{
+    display: flex;
+}
+
+.container .main{
+    flex-grow: 100;
+    background: #ffffff;
+    height: 100vh;
+    border-left: solid #555555;
+}
+
+#menu{
+    background-color: #f4f8fa;
+}
+
+/*ヘッダー*/
+.header{
+    display: flex;
+    border-bottom: solid #555555;
+    padding: 10px;
+    align-items: center;
+}
+
+.header .gear img{
+    max-width: 25px;
+    max-height: 25px;
+    margin-right: 15px;
+    margin-left: auto;
+}
+
+.header .account img{
+    max-width: 25px;
+    max-height: 25px;
+    border: solid #7ea6e0;
+    border-radius: 50%;
+}
+
+.header_icon{
+    margin-left: auto;
+}
+
+/*サブメニュー*/
+#menu ul{ 
+    margin: 0; 
+    padding :0; 
+    list-style: none; 
+}
+
+#menu li{ 
+    padding-top: 12px; 
+    margin:0; 
+}
+
+#menu li a{
+    display: block;
+    background: url(最初の画像のアドレス) no-repeat left center;
+    padding: 2px 0px 3px 18px;
+    color: #555555;
+    width: 150px;
+    margin: 1px 0px;
+    text-decoration:none;
+    border-bottom: 1px dotted #666666;
+    font-size: 14px;
+}
+
+#menu li a:hover{
+    background: url(入れ替わる画像のアドレス) no-repeat left center;
+}
+
+/*メインの機能*/
+.main_function{
+    display:flex;
+    align-items: center;
+    margin: 0 50px 0 50px;
+    border-bottom: solid #555555;
+}
+
+.main_function .all_license{
+    padding: 20px 0 20px 30px;
+}
+
+/*検索ボックス*/
+.search-box {
+    position: relative;
+    margin-left: 30px;
+}
+
+input[type=text] {
+    padding: 6px;
+    font-size: 18px;
+    background-color: #f4f8fa;
+    border: solid;
+    border-radius: 8px;
+}
+
+.search-box button {
+    padding: 6px 15px;
+    font-size: 18px;
+    position: absolute;
+    left: 190px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/*資格追加ボタン*/
+#add{
+    padding: 8px 12px 8px 12px;
+    position: relative;
+    margin-left: auto;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #dee9f7;
+    cursor: pointer;
+}
+
+/*資格データ*/
+.license_data{
+    display:flex;
+    align-items: center;
+    margin: 0 50px 0 50px;
+    border-bottom: solid #555555;
+}
+
+.license_data .license_name{
+    padding: 20px 0 5px 30px;
+}
+
+.license_data .deadline{
+    padding: 0 0 10px 30px;
+    font-size: 12px;
+    color: #4b40407a;
+}
+
+/*ベルボタン*/
+#bell{
+    position: relative;
+    margin-left: auto;
+    border: solid #7ea6e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+/*ゴミ箱ボタン*/
+#garbage{
+    position: relative;
+    border: solid #7ea6e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+/*詳細ボタン*/
+#detail{
+    position: relative;
+    border: solid #7ea6e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin-right: 20px;
+}
+
+.license_data button{
+    max-width: 50px;
+    max-height: 50px;
+    margin-left: 5px;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.license_data button img{
+    max-width: 25px;
+    max-height: 25px;
+}
+
