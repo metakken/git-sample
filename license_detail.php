@@ -12,7 +12,7 @@
         
         <!--<script src="main1.js"></script>-->
         <div class="header">
-            <div>LICDENSE SQUARE:ポイント算出</div>
+            <div>LICENSE SQUARE:資格詳細</div>
             <div class="header_icon">
                 <a href="#" class="gear"><img src="gear.png"/></a>
                 <a href="#" class="account"><img src="account.png"/></a>
@@ -22,7 +22,7 @@
         <div class="container">
             <div id="menu">
                 <ul>
-                    <li><a href="main.html">保有資格</a></li>
+                    <li><a href="mainscreen.html">保有資格</a></li>
                     <li><a href="#">関連資格</a></li>
                     <li><a href="#">資格一覧</a></li>
                     <li><a href="#">資格診断</a></li>
@@ -45,6 +45,18 @@
 
         
                 </div>
+                    <?php
+                    $pdo = new PDO("mysql:host=localhost;dbname=p_license;charset=utf8", "root", "");
+
+                    $sql = "SELECT * FROM test_license";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt -> execute();
+
+                    while ($row = $stmt -> fetch(PDO::FETCH_ASSOC )) {
+                        print_r($row);
+                        echo("<br/>");
+                    }
+                    ?>
             </div>
         </div>
 

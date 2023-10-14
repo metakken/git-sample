@@ -45,19 +45,5 @@ function count() {
 }
 
 
-function detailmenu(){
-    // 要素を取得
-    let ele = document.getElementById("detailmenu");
-    // 現在の display プロパティの値を保持
-    const displayOriginal = ele.style.display;
-    if(displayOriginal=='none'){
-        // 元に戻して表示
-        ele.style.display = 'inline';
-    }else{
-        // none に設定して非表示
-        ele.style.display = 'none';
-    }
-
-}
 
 
