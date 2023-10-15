@@ -6,7 +6,6 @@
 .container .main{
     flex-grow: 100;
     background: #ffffff;
-    height: 100vh;
     border-left: solid #555555;
 }
 
@@ -169,5 +168,21 @@ input[type=text] {
 .license_data button img{
     max-width: 25px;
     max-height: 25px;
+}
+
+/*license_detail.phpのやつ*/
+.license_detail{
+    display:flex;
+    align-items: center;
+    margin: 0 50px 0 50px;
+    border-bottom: solid #b4aeae;
+    padding: 20px 0 20px 30px;
+}
+.center{
+    white-space: nowrap;
+    min-width: 80px;
+}
+.margin_r{
+    margin: 0 50px 0 0;
 }
 
