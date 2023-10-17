@@ -1,0 +1,11 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.license {
+    margin-bottom: 20px;
+}
+.custom-image {
+    width: auto; /* 画像の幅を指定 */
+    height: 250px; /* 画像の高さを指定 */
+    object-fit: contain;
+}
