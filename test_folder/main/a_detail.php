@@ -162,8 +162,8 @@ function db_search_li($chain_flag){
                                 $class="";
                                 if ($chain_flag!=1) $class="hide";
                             ?>
-                            <form action="l_detail.php" method="post">
-                                <button id="detail" type="submit" name="l1" class="<?PHP echo $class; ?>"><a href="l_detail.php"><img src="detail.png"/></a></button>
+                            <form action="a_detail.php" method="post">
+                                <button id="detail" type="submit" name="l1" class="<?PHP echo $class; ?>"><a href="a_detail.php"><img src="detail.png"/></a></button>
                             </form>
                         </div>
                         </div>  

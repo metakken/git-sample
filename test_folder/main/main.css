@@ -205,3 +205,29 @@ input[type=text] {
     padding: 20px 0 0 30px;
 }
 
+/*資格データ*/
+.license_detail2{
+    display:flex;
+    align-items: center;
+    margin: 0 50px 0 50px;
+    border-bottom: solid #b4aeae;
+    padding: 15px 0 15px 30px;
+}
+.license_data2{
+    display:flex;
+    align-items: center;
+    margin: 0 0 0 50px;
+    position: relative;
+    margin-left: auto;
+}
+.license_data2 button{
+    max-width: 50px;
+    max-height: 50px;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.license_data2 button img{
+    max-width: 25px;
+    max-height: 25px;
+}
