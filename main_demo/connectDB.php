@@ -1,7 +1,7 @@
 <?php
 // データベースに接続
 function connectDB() {
-    $param = 'mysql:dbname=license_square;host=localhost';
+    $param = 'mysql:dbname=license_square;host=localhost;charset=utf8';
     try {
         // ローカル環境で実行してるとき
         $pdo = new PDO($param, 'root', '');
