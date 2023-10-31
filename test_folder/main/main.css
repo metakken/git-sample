@@ -6,6 +6,7 @@
 .container .main{
     flex-grow: 100;
     background: #ffffff;
+    min-height: 100vh;
     border-left: solid #555555;
 }
 
@@ -170,7 +171,7 @@ input[type=text] {
     max-height: 25px;
 }
 
-/*license_detail.phpのやつ*/
+/*l_detail.phpのやつ*/
 .license_detail{
     display:flex;
     align-items: center;
@@ -184,5 +185,23 @@ input[type=text] {
 }
 .margin_r{
     margin: 0 50px 0 0;
+}
+.license_name{
+    display:flex;
+    align-items: center;
+    margin: 0 50px 0 0;
+    padding: 20px 0 20px 30px;
+}
+.r_image{
+    margin: 0 50px 0 50px;
+    padding: 20px 0 0 30px;
+    height: 80%;
+    width: 80%;
+}
+.r_image_title{
+    display:flex;
+    align-items: center;
+    margin: 0 50px 0 50px;
+    padding: 20px 0 0 30px;
 }
 
