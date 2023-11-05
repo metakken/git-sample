@@ -1,12 +1,10 @@
 <script>
 <?php
     session_start();
-    $_SESSION['user_id'] = 1;
-
-// フォーム送信以外のHTTPリクエストが行われたとき
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // データベースに接続
     require_once('../connectDB.php');
+
+// フォーム送信のHTTPリクエストが行われたとき
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pdo = connectDB();
     // 全資格テーブルから資格名が一致する行を取得(:li_nameは後で定義)
     $sql = 'SELECT * FROM license WHERE li_name = :li_name LIMIT 1';
@@ -22,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // 保有資格テーブルに既に登録されているかを確認
         $sql = 'SELECT * FROM p_license WHERE user_id = :user AND license_id = :license';
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':user',$_SESSION['user_id'],PDO::PARAM_INT);
+        $stmt->bindValue(':user',$_SESSION['user_id'],PDO::PARAM_STR);
         $stmt->bindValue(':license',$license['li_id'],PDO::PARAM_INT);
         $stmt->execute();
         $exist = $stmt->fetch();
@@ -45,6 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $expiry_date->modify($license['valid_period']); // 取得年月日に有効期間を加算
                 $next_date = clone $expiry_date;
                 $next_date->modify('-1years');  // 有効期間の一年前に通知日時を設定
+                if($next_date < new DateTime()){
+                    $next_date = clone $expiry_date;
+                    $next_date->modify('-1 month');
+                }
                 $expiry_date=$expiry_date->format('Y-m-d'); // 文字列に変換
                 $next_date=$next_date->format('Y-m-d'); // 文字列に変換
             }
@@ -52,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // 保有資格テーブルにデータを挿入
             $sql = 'INSERT INTO p_license (user_id, license_id, aqs_date, image_type, image_file, image_size, expiry_date, next_date) VALUES (:user_id, :license_id, :aqs_date, :image_type, :image_file, :image_size, :expiry_date, :next_date)';
             $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+            $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
             $stmt->bindValue(':license_id', $license_id, PDO::PARAM_INT);
             $stmt->bindValue(':aqs_date', $aqs_date, PDO::PARAM_STR);
             $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
@@ -67,6 +69,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         else{   // 登録済みの場合
             echo "alert('この資格は既に登録されています');";
         }
+    }
+}
+else{
+    $pdo = connectDB();
+    $sql = 'SELECT notif_info FROM user WHERE user_id = :user';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':user',$_SESSION['user_id'],PDO::PARAM_STR);
+    $stmt->execute();
+    $notif = $stmt->fetch();
+    if(empty($notif['notif_info'])){
+        readfile("../push/set_notif.js");
+        echo "setNotif(0);";
     }
 }
 ?>

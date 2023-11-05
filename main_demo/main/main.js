@@ -11,5 +11,3 @@ function removeLicense(li_id) {
 function showDetail(li_id){
     window.location.href = 'l_detail.php?license='+li_id;
 }
-
-function setNotif(li_id){}
