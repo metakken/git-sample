@@ -10,6 +10,13 @@
     border-left: solid #555555;
 }
 
+button:hover{
+    filter: brightness(0.95);
+}
+button:active{
+    filter: brightness(0.8);
+}
+
 #menu{
     background-color: #f4f8fa;
 }
@@ -62,9 +69,11 @@
     border-bottom: 1px dotted #666666;
     font-size: 14px;
 }
-
 #menu li a:hover{
-    color: #000000;
+    filter: brightness(0.7);
+}
+#menu li a:active{
+    filter: brightness(0);
 }
 
 /*メインの機能*/
@@ -136,22 +145,36 @@ input[type=text] {
 }
 
 /*ベルボタン*/
-#bell{
+.license_data .bell{
     position: relative;
     margin-left: auto;
     border: solid #7ea6e0;
     border-radius: 8px;
     background-color: #ffffff;
 }
+.license_data .pushed_bell{
+    position: relative;
+    margin-left: auto;
+    border: solid #7ea6e0;
+    border-radius: 8px;
+    background-color: #3aabd2;
+}
+.license_data .disnabled_bell{
+    filter: brightness(0.8);
+    position: relative;
+    margin-left: auto;
+    border: solid #7598ce;
+    border-radius: 8px;
+}
 /*ゴミ箱ボタン*/
-#garbage{
+.license_data .garbage{
     position: relative;
     border: solid #7ea6e0;
     border-radius: 8px;
     background-color: #ffffff;
 }
 /*詳細ボタン*/
-#detail{
+.license_data .detail{
     position: relative;
     border: solid #7ea6e0;
     border-radius: 8px;

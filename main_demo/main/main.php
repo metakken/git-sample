@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD']) {
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../main.css?<?php echo date('Ymd-Hi'); ?>">
         <script type="text/javascript" src="main.js?<?php echo date('Ymd-Hi'); ?>"></script>
+        <script type="text/javascript" src="../push/set_notif.js?<?php echo date('Ymd-Hi'); ?>"></script>
     </head>
 
     <body>
@@ -65,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD']) {
                             require_once '../connectDB.php';
                             $pdo = connectDB();
                             // 資格名を取得
-                            $sql = 'SELECT li_name FROM license WHERE li_id = :li_id LIMIT 1';
+                            $sql = 'SELECT * FROM license WHERE li_id = :li_id LIMIT 1';
                             $stmt = $pdo->prepare($sql);
                             $stmt->bindValue(':li_id', $p_license[$i]['license_id'], PDO::PARAM_INT);
                             $stmt->execute();
@@ -83,9 +84,20 @@ if ($_SERVER['REQUEST_METHOD']) {
                             }
                             ?>
                         </div>
-                        <button id="bell" onclick="setNotif(<?= $p_license[$i]['license_id']?>)"><img src="../image/bell.png"/></button>
-                        <button id="garbage" onclick="removeLicense(<?= $p_license[$i]['license_id']?>)"><img src="../image/garbage.png"/></button>
-                        <button id="detail" onclick="showDetail(<?=$p_license[$i]['license_id']?>)"><img src="../image/detail.png"/></button>
+                        <?php
+                            if ($license['update_flag'] && new DateTime() <= new DateTime($p_license[$i]['expiry_date'])){
+                                if($p_license[$i]['next_date']){
+                                    echo "<button class='pushed_bell' id='bell{$p_license[$i]['license_id']}' onclick='setNotif({$p_license[$i]['license_id']})'><img src='../image/pushed_bell.png'/></button>";
+                                }else{
+                                    echo "<button class='bell' id='bell{$p_license[$i]['license_id']}' onclick='setNotif({$p_license[$i]['license_id']})'><img src='../image/bell.png'/></button>";
+                                }
+                            }
+                            else{
+                                echo "<button class='disnabled_bell'><img src='../image/bell.png'/></button>";
+                            }
+                        ?>
+                        <button class="garbage" onclick="removeLicense(<?= $p_license[$i]['license_id']?>)"><img src="../image/garbage.png"/></button>
+                        <button class="detail" onclick="showDetail(<?=$p_license[$i]['license_id']?>)"><img src="../image/detail.png"/></button>
                     </div>
                 <?php endfor; ?>
             </div>
