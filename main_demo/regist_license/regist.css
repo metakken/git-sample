@@ -1,0 +1,99 @@
+.main {
+    display: flex;
+}
+
+form{
+    width: 40%;
+}
+
+.required::before {
+    content: "必須";
+    margin-right: 13px;
+    color: #FFF;
+    background: #9eb3d2;
+    padding-top: 3px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+    border-radius: 2px;
+}
+
+#license {
+    padding-left: 10px;/*左ぴったりくっつかないように*/
+    padding-top: 3px;
+    border-radius: 4px;/*フォーム枠を丸くする*/
+    border: 1px solid #666;
+    height: 40px;
+    width: 300px;/*枠の幅*/
+    font-size: 16px;
+    margin-top: -5px;
+    margin-left: 20px;
+}
+
+#date {
+    padding-left: 5px;
+    padding-top: 3px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 550;
+    margin-top: -5px;
+    margin-left: 20px;
+}
+
+#image {
+    height: 30px;
+    font-size: 15px;
+    margin-top: -5px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+label{
+    vertical-align: middle; /* テキストを垂直方向に中央揃え */
+    display: inline-block; /* テキストをブロック要素として扱う */
+    margin-top: 20px; /* 上部に5pxの余白を追加 */
+    margin-left: 20px;
+    font-size: 18px;
+    padding-top: 3px;
+}
+
+button[type=submit]{
+    padding: 8px 20px 8px 20px;
+    font-size: 20px;
+    margin-left: 20px;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 30px;
+}
+button[type=submit]:hover{
+    filter: brightness(0.95);
+}
+button[type=submit]:active{
+    filter: brightness(0.8);
+}
+
+.vertical_line {
+    border-left: 1px dotted #313131; /* 縦線のスタイル */
+    height: 95%;
+    margin: 10 10 0 20px; /* 縦線の左右の余白を設定 */
+}
+
+.right {
+    display: flex;
+    width: 60%;
+    margin-left: auto;
+    flex-direction: column;
+}
+
+#image_container img{
+    width: 90%;
+    margin: 20px 5% 20px 5%;
+    border: 0.5px solid #343434;
+}
+
+#cancel_image {
+    margin: 20px 40% 20px 40%;
+}
