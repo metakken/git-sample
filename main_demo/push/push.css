@@ -1,0 +1,26 @@
+label{
+    vertical-align: middle; /* テキストを垂直方向に中央揃え */
+    display: inline-block; /* テキストをブロック要素として扱う */
+    margin-top: 20px; /* 上部に5pxの余白を追加 */
+    margin-left: 20px;
+    font-size: 18px;
+    padding-top: 3px;
+}
+
+button[type=submit]{
+    padding: 8px 20px 8px 20px;
+    font-size: 20px;
+    margin-left: 20px;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 30px;
+}
+button[type=submit]:hover{
+    filter: brightness(0.95);
+}
+button[type=submit]:active{
+    filter: brightness(0.8);
+}
