@@ -26,7 +26,9 @@ $_SESSION['user_id'] = "admin";
         <div class="container">
             <div id="menu">
                 <ul>
-                    <li><a href="#">資格追加</a></li>
+                    <li><a href="#">資格追加・編集</a></li>
+                    <li><a href="#">登録ユーザ一覧</a></li>
+                    <li><a href="#">グループ一覧</a></li>
                     <li><a href="push_notif.php">通知一斉送信</a></li>
                 </ul>
             </div>

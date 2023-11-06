@@ -61,8 +61,6 @@ function sendPush(){
     })
     .then(response => response.text())
     .then(data => {
-        if(data != "true"){
-            alert("通知失敗："+data)
-        }
+        alert(data)
     });
 }

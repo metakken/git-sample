@@ -13,6 +13,7 @@ $auth = [
 ];
 $webPush = new WebPush($auth);
 
+$count = 0;
 $push_result = [];
 $user_id = "";
 $pdo = connectDB();
@@ -44,6 +45,7 @@ for($i=0; $i<count($p_license); $i++){
     $license = $stmt->fetch();
 
     $result = $webPush->sendOneNotification(Subscription::create($subscription), '{"title":"「'.$license['li_name'].'」の更新日が近付いています。", "body":"有効期限：'.$p_license[$i]['expiry_date'].'", "url":"../main/main.php"}', ['TTL' => 5000]);
+    $count++;
     if(!$result){
         $push_result[] = "[".$user_id."-".$license['li_name'].']';
     }
@@ -93,10 +95,10 @@ for($i=0; $i<count($p_license); $i++){
 }
 
 if(empty($push_result)){
-    echo "true";
+    echo $count."件の通知の送信に成功しました。";
 }
 else{
-    echo json_encode($push_result);
+    echo "通知失敗：".json_encode($push_result);
 }
 exit;
 ?>

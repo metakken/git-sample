@@ -43,6 +43,13 @@ button:active{
     border-radius: 50%;
 }
 
+.header .gear img:hover, .header .account img:hover{
+    filter: brightness(0.95);
+}
+.header .gear img:active, .header .account img:active{
+    filter: brightness(0.8);
+}
+
 .header_icon{
     margin-left: auto;
 }
