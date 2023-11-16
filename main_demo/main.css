@@ -337,3 +337,135 @@ input[type=checkbox] {
     text-decoration:none;
     color: #dee9f7;
 }
+
+/*資格データ(sort)*/
+#license_data{
+    display:flex;
+    align-items: center;
+    margin: 0 50px 0 50px;
+    border-bottom: solid #555555;
+}
+
+#license_data .license_name{
+    font-size: 18px;
+    padding: 20px 0 10px 30px;
+}
+
+#license_data .deadline{
+    padding: 5px 0 10px 30px;
+    font-size: 14px;
+    color: #4b40407a;
+}
+
+/*ベルボタン*/
+#license_data .bell{
+    position: relative;
+    margin-left: auto;
+    border: solid #7ea6e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+#license_data .pushed_bell{
+    position: relative;
+    margin-left: auto;
+    border: solid #7ea6e0;
+    border-radius: 8px;
+    background-color: #3aabd2;
+}
+#license_data .disnabled_bell{
+    filter: brightness(0.8);
+    position: relative;
+    margin-left: auto;
+    border: solid #7598ce;
+    border-radius: 8px;
+}
+/*ゴミ箱ボタン*/
+#license_data .garbage{
+    position: relative;
+    border: solid #7ea6e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+/*詳細ボタン*/
+#license_data .detail{
+    position: relative;
+    border: solid #7ea6e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin-right: 20px;
+}
+
+#license_data button{
+    max-width: 40px;
+    max-height: 40px;
+    margin-left: 5px;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+#license_data button img{
+    max-width: 25px;
+    max-height: 25px;
+}
+
+
+select{
+margin-left: 5px;
+border-radius: 8px;
+border-width: 2px;
+}
+.selectbox::after{
+  content:"";
+  display:block;
+  width:10px;
+  height:10px;
+  position:absolute;
+  right:5%;
+  top:35%;
+  border-bottom:#333 2px solid;
+  border-right:#333 2px solid;
+  border-radius: 8px;
+  transform:rotate(45deg)translateY(-30%);
+}
+.color.selectbox select{
+  background:blue;
+  color:#fff;
+  border-radius:8px;
+}
+.color.selectbox::after{
+  border-bottom:#fff 5px solid;
+  border-right:#fff 5px solid;
+  border-radius: 8px;
+}
+
+/*更新条件管理ボタン*/
+.button1{
+    padding: 8px 12px 8px 12px;
+    margin: 5px 5px 5px 120px;
+    position: relative;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #dee9f7;
+    cursor: pointer;
+}
+.button1 a{
+    display: block;
+    text-decoration:none;
+    color: #dee9f7;
+}
+.b_update{
+    padding: 8px 12px 8px 12px;
+    margin: 5px 5px 5px 5px;
+    position: relative;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #dee9f7;
+    cursor: pointer;
+}
+.b_update a{
+    display: block;
+    text-decoration:none;
+    color: #dee9f7;
+}
