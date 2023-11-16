@@ -8,7 +8,7 @@ $pdo = connectDB();
 
 if ($_SERVER['REQUEST_METHOD']) {
     // 保有資格テーブルからデータをすべて取得
-    $sql = 'SELECT * FROM p_license WHERE user_id = :user_id';
+    $sql = 'SELECT * FROM p_license WHERE user_id = :user_id ORDER BY aqs_date';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
     $stmt->execute();
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD']) {
 
     <body>
         <div class="header">
-            <div>LICENSE SQUARE</div>
+            <div>LICENSE SQUARE 取得年月日若い順</div>
             <div class="header_icon">
                 <a href="#" class="gear"><img src="../image/gear.png"/></a>
                 <a href="#" class="account"><img src="../image/account.png"/></a>
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD']) {
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </div>
 
-                    <button id="sort" type="button"><a href="mysort.php"> sort </a></button>
+                    <button id="sort" type="button"><a href="main.php"> sort </a></button>
                     <button id="filter" type="button"><a href="#">filter</a></button>
 
                     <button id="add" onclick="addLicense()">+Add</button>        

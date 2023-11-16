@@ -229,3 +229,111 @@ input[type=text] {
     padding: 20px 0 0 30px;
 }
 
+
+
+/*資格データ*/
+.hide{
+    display: none;
+}
+.license_detail2{
+    display:flex;
+    align-items: center;
+    margin: 0 50px 0 50px;
+    border-bottom: solid #b4aeae;
+    padding: 15px 0 15px 30px;
+}
+#detail{
+    position: relative;
+    border: solid #7ea6e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin-right: 20px;
+}
+.license_data2{
+    display:flex;
+    align-items: center;
+    margin: 0 0 0 50px;
+    position: relative;
+    margin-left: auto;
+}
+.license_data2 button{
+    max-width: 50px;
+    max-height: 50px;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.license_data2 button img{
+    max-width: 25px;
+    max-height: 25px;
+}
+
+/*更新条件の詳細*/
+.search-box {
+    position: relative;
+    margin-left: 30px;
+}
+
+.term input[type=text] {
+    padding: 8px 6px 4px 6px;
+    font-size: 18px;
+    background-color: #f4f8fa;
+    border: solid;
+    border-radius: 8px;
+}
+
+.license_detail3{
+    display:flex;
+    align-items: center;
+    margin: 0 50px 0 50px;
+    border-bottom: solid #b4aeae;
+    border-top: solid #b4aeae;
+    padding: 20px 0 20px 30px;
+}
+
+.license_detail4{
+    display:flex;
+    align-items: center;
+    margin: 0 50px 0 50px;
+    padding: 20px 0 20px 30px;
+}
+
+input[type=checkbox] {
+    transform: scale(2);
+    margin: 10px 20px 10px 80px;
+  }
+
+
+/*sortボタン*/
+#sort{
+    padding: 8px 12px 8px 12px;
+    margin-left: 5px;
+    position: relative;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #dee9f7;
+    cursor: pointer;
+}
+#sort a{
+    display: block;
+    text-decoration:none;
+    color: #dee9f7;
+}
+
+/*filterボタン*/
+#filter{
+    padding: 8px 12px 8px 12px;
+    margin-left: 5px;
+    position: relative;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #dee9f7;
+    cursor: pointer;
+}
+#filter a{
+    display: block;
+    text-decoration:none;
+    color: #dee9f7;
+}
