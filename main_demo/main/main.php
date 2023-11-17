@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD']) {
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </div>
                     
-                    <form action="sort.php" method = "POST">
+                    <form action="mysort.php" method = "POST">
                     <select name='sort'>
                     <option value='option1'>名前順</option>
                     <option value='option2'>有効期間順</option>

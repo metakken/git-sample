@@ -7,12 +7,41 @@ require_once('../connectDB.php');
 $pdo = connectDB();
 
 if ($_SERVER['REQUEST_METHOD']) {
-    // 保有資格テーブルからデータをすべて取得
-    $sql = 'SELECT * FROM p_license WHERE user_id = :user_id ORDER BY aqs_date';
+    if(isset($_POST["sort"])) {
+        // セレクトボックスで選択された値を受け取る
+        $sort_info = $_POST["sort"];
+      
+        if($sort_info=='option1'){
+            $sql = 'SELECT * FROM license ORDER BY li_name';
+        }else if($sort_info=='option2'){
+            $sql = 'SELECT * FROM license ORDER BY valid_period';
+        }else if($sort_info=='option3'){
+            $sql = 'SELECT * FROM license ORDER BY li_field';
+        }
+      }
+
+    // 該当資格の資格データを取得
+    
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
     $stmt->execute();
-    $p_license = $stmt->fetchAll(); // 全行取得
+    $license0 = $stmt->fetchALL();
+
+    $temp=0;
+    for($i = 0; $i < count($license0); $i++){
+        // 保有資格テーブルからデータをすべて取得
+        $sql = 'SELECT * FROM p_license WHERE user_id = :user_id AND license_id = :li_id LIMIT 1';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
+        $stmt->bindValue(':li_id', $license0[$i]['li_id'], PDO::PARAM_INT);
+        $stmt->execute();
+        $t = $stmt->fetch();
+        if($t){
+            $p_license[$temp] = $t;
+            $temp++;
+        }
+        
+    }
+    
 }
 ?>
 
@@ -29,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD']) {
 
     <body>
         <div class="header">
-            <div>LICENSE SQUARE 取得年月日若い順</div>
+            <div>LICENSE SQUARE</div>
             <div class="header_icon">
                 <a href="#" class="gear"><img src="../image/gear.png"/></a>
                 <a href="#" class="account"><img src="../image/account.png"/></a>
@@ -56,7 +85,15 @@ if ($_SERVER['REQUEST_METHOD']) {
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </div>
 
-                    <button id="sort" type="button"><a href="main.php"> sort </a></button>
+                    <form action="mysort.php" method = "POST">
+                    <select name='sort'>
+                    <option value='option1'>名前順</option>
+                    <option value='option2'>有効期間順</option>
+                    <option value='option3'>資格分野</option>
+                    </select>
+                    <input type="submit"name="submit"value="sort" id="sort">
+                    </form>
+                    
                     <button id="filter" type="button"><a href="#">filter</a></button>
 
                     <button id="add" onclick="addLicense()">+Add</button>        
@@ -64,30 +101,49 @@ if ($_SERVER['REQUEST_METHOD']) {
                 
                 <!-- 保有資格表示 -->
                 <?php for ($i = 0; $i < count($p_license); $i++): ?>                
-                    <div class="license_data">
+                    <div id="license_data">
                         <?php
                             require_once '../connectDB.php';
                             $pdo = connectDB();
                             // 資格名を取得
-                            $sql = 'SELECT * FROM license WHERE li_id = :li_id LIMIT 1';
-                            $stmt = $pdo->prepare($sql);
-                            $stmt->bindValue(':li_id', $p_license[$i]['license_id'], PDO::PARAM_INT);
-                            $stmt->execute();
-                            $license = $stmt->fetch();
+                            if($p_license[$i]){
+                                $sql = 'SELECT * FROM license WHERE li_id = :li_id LIMIT 1';
+                                $stmt = $pdo->prepare($sql);
+                                $stmt->bindValue(':li_id', $p_license[$i]['license_id'], PDO::PARAM_INT);
+                                $stmt->execute();
+                                $license = $stmt->fetch();
+                            }
+                            
                         ?>
                         <div>
-                            <div class="license_name"><?=$license['li_name']?></div>
+                            <?php
+                            if($p_license[$i]){
+                                if($sort_info=='option1'){
+                                    echo "<div class='license_name'>{$license['li_name']}</div>";
+                                }else if($sort_info=='option2'){
+                                    echo "<div class='license_name'>{$license['li_name']} (有効期間：{$license['valid_period']})</div>";
+                                }else if($sort_info=='option3'){
+                                    echo "<div class='license_name'>{$license['li_name']} (資格分野：{$license['li_field']})</div>";
+                                }
+                                
+                            }
+                            ?>
+                            
                             <?php 
-                            // 有効期限が存在するとき
-                            if ($p_license[$i]['expiry_date']){
-                                echo "<div class='deadline'>有効期限：{$p_license[$i]['expiry_date']}</div>";
+                            if($p_license[$i]){
+                                // 有効期限が存在するとき
+                                if ($p_license[$i]['expiry_date']){
+                                    echo "<div class='deadline'>有効期限：{$p_license[$i]['expiry_date']}</div>";
+                                }
+                                else{
+                                    echo '<div class="deadline">有効期限：　　―</div>';
+                                }
                             }
-                            else{
-                                echo '<div class="deadline">有効期限：　　―</div>';
-                            }
+                            
                             ?>
                         </div>
                         <?php
+                        if($p_license[$i]){
                             if ($license['update_flag'] && new DateTime() <= new DateTime($p_license[$i]['expiry_date'])){
                                 if($p_license[$i]['next_date']){
                                     echo "<button class='pushed_bell' id='bell{$p_license[$i]['license_id']}' onclick='setNotif({$p_license[$i]['license_id']})'><img src='../image/pushed_bell.png'/></button>";
@@ -98,10 +154,23 @@ if ($_SERVER['REQUEST_METHOD']) {
                             else{
                                 echo "<button class='disnabled_bell'><img src='../image/bell.png'/></button>";
                             }
+                        }
+                            
                         ?>
-                        <button class="garbage" onclick="removeLicense(<?= $p_license[$i]['license_id']?>)"><img src="../image/garbage.png"/></button>
-                        <button class="detail" onclick="showDetail(<?=$p_license[$i]['license_id']?>)"><img src="../image/detail.png"/></button>
+                        <?php
+                        if($p_license[$i]){
+                            echo "<button class='garbage' onclick='removeLicense({$p_license[$i]['license_id']})'><img src='../image/garbage.png'/></button>";
+                            echo "<button class='detail' onclick='showDetail({$p_license[$i]['license_id']})'><img src='../image/detail.png'/></button>";
+                        }
+                        ?>
+
                     </div>
+                    <?php
+                    if(!$p_license[$i]){
+                        echo "<script>document.getElementById('license_data').style.visibility = 'hidden';</script>";
+                    }
+                    ?>
+
                 <?php endfor; ?>
             </div>
         </div>

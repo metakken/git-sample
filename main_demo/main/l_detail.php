@@ -153,17 +153,6 @@
                                 echo '<p><input type="checkbox" id=checksmall1 checked><input type="text" id="text1" size="80" placeholder='.$p_license['update_term1'].'></p>';
                             }else{
                                 echo '<p><input type="checkbox" id=checksmall1><input type="text" id="text1" size="80" placeholder='.$p_license['update_term1'].'></p>';
-                                
-                            //     $a = "unko";
-                            // echo $a;
-                            // echo $p_license['update_term2'];
-                            // echo "<button id='100' onclick='deleteTerm1(".$p_license['license_id'].",$a)'>削除</button>";
-                                // echo "<button id='detail' onclick='showAllDetail({$license['superior_id']})'><img src='../image/detail.png'/></button>";
-                                // echo "<button id='1' onclick='deleteTerm(this.id,{$p_license['license_id']},{$p_license['update_term1']},{$p_license['update_term2']},{$p_license['update_term3']},{$p_license['update_term4']},{$p_license['update_term5']},{$p_license['update_term6']},{$p_license['update_term7']},{$p_license['update_term8']},{$p_license['update_term9']},{$p_license['update_term10']})'>削除</button>";
-                            
-                                //    echo "<button id='1' onclick='deleteTerm(this.id{$p_license['license_id']}{$p_license['update_term1']}{$p_license['update_term2']}{$p_license['update_term3']}{$p_license['update_term4']}{$p_license['update_term5']}{$p_license['update_term6']}{$p_license['update_term7']}{$p_license['update_term8']}{$p_license['update_term9']}{$p_license['update_term10']})'>削除</button>";
-                                // echo "<button id='1' onclick='deleteTerm({$p_license['license_id']},{$p_license['update_term1']},{$p_license['update_term2']},{$p_license['update_term3']},{$p_license['update_term4']},{$p_license['update_term5']},{$p_license['update_term6']},{$p_license['update_term7']},{$p_license['update_term8']},{$p_license['update_term9']},{$p_license['update_term10']},{$a})'>削除</button>";
-                                
                             }
                         }else{
                             echo '<p><input type="checkbox" id=checksmall1 hidden><input type="text" hidden id="text1" size="80" placeholder='.$p_license['update_term1'].'></p>';
