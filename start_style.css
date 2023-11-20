@@ -1,0 +1,99 @@
+/*全体の配置*/
+.container{
+    display: flex;
+}
+
+.container .main{
+    position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 100%
+}
+
+
+
+/*ヘッダー*/
+.header{
+    display: flex;
+    border-bottom: solid #555555;
+    padding: 10px;
+    align-items: center;
+}
+
+/*メインの機能*/
+
+
+
+input[type=checkbox]{
+	display: none
+}
+
+#logcheck:checked + #login{
+	display: none
+}
+
+#makecheck:checked + #makeaccount{
+	display: none
+}
+
+button[type=button]{
+    padding: 8px 20px 8px 20px;
+    font-size: 20px;
+    margin-left: 20px;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+input[type=text] {
+    padding: 8px 6px 4px 6px;
+    font-size: 18px;
+    background-color: #f4f8fa;
+    border: solid;
+    border-radius: 8px;
+}
+
+input[type=email] {
+    padding: 8px 6px 4px 6px;
+    font-size: 18px;
+    background-color: #f4f8fa;
+    border: solid;
+    border-radius: 8px;
+}
+
+input[type=password] {
+    padding: 8px 6px 4px 6px;
+    font-size: 18px;
+    background-color: #f4f8fa;
+    border: solid;
+    border-radius: 8px;
+}
+
+input[type=submit]{
+    padding: 8px 20px 8px 20px;
+    font-size: 20px;
+    margin-left: 20px;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+input[type=date]{
+    padding: 8px 20px 8px 20px;
+    font-size: 20px;
+    margin-left: 20px;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
