@@ -6,7 +6,25 @@ $_SESSION['user_id'] = 1;
 require_once('../connectDB.php');
 $pdo = connectDB();
 
-if ($_SERVER['REQUEST_METHOD']) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['searcher'])) {   // 資格検索時
+    $sql = 'SELECT * FROM license WHERE li_name LIKE :li_name';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':li_name', '%'.$_POST['searcher'].'%', PDO::PARAM_STR);
+    $stmt->execute();
+    $license = $stmt->fetchAll();
+
+    $tmp = [];
+    foreach ($license as $item) {
+        $tmp[] = 'license_id = '.$item['li_id'];
+    }
+
+    $sql = 'SELECT * FROM p_license WHERE user_id = :user_id AND ('.implode(' OR ', $tmp).')';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_STR);
+    $stmt->execute();
+    $p_license = $stmt->fetchAll();
+}
+else {
     // 保有資格テーブルからデータをすべて取得
     $sql = 'SELECT * FROM p_license WHERE user_id = :user_id';
     $stmt = $pdo->prepare($sql);
@@ -51,10 +69,10 @@ if ($_SERVER['REQUEST_METHOD']) {
                     <div class="all_license">総数：</div>
                     <div><?=count($p_license)?></div>
 
-                    <div class="search-box">
-                        <input type="text" placeholder="資格名を入力" id="searcher">
+                    <form method="post" class="search-box">
+                        <input type="text" placeholder="資格名を入力" name="searcher">
                         <button type="submit"><i class="fa fa-search"></i></button>
-                    </div>
+                    </form>
 
                     <button id="add" onclick="addLicense()">+Add</button>        
                 </div>

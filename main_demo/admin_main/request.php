@@ -1,6 +1,15 @@
 <?php
 session_start();
 $_SESSION['user_id'] = "admin";
+
+// データベースに接続
+require_once('../connectDB.php');
+$pdo = connectDB();
+
+$sql = 'SELECT * FROM request';
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$request = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -10,13 +19,13 @@ $_SESSION['user_id'] = "admin";
         <title>LICENSE SQUARE：管理者ページ</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../main.css?<?php echo date('Ymd-Hi'); ?>">
-        <link rel="stylesheet" href="push.css?<?php echo date('Ymd-Hi'); ?>">
-        <script type="text/javascript" src="../push/set_notif.js?<?php echo date('Ymd-Hi'); ?>"></script>
+        <link rel="stylesheet" href="admin_main.css?<?php echo date('Ymd-Hi'); ?>">
+        <script type="text/javascript" src="admin_main.js?<?php echo date('Ymd-Hi'); ?>"></script>
     </head>
 
     <body>
         <div class="header">
-            <div>LICENSE SQUARE：通知一斉送信</div>
+            <div>LICENSE SQUARE：資格追加・編集</div>
             <div class="header_icon">
                 <a href="#" class="gear"><img src="../image/gear.png"/></a>
                 <a href="#" class="account"><img src="../image/account.png"/></a>
@@ -34,8 +43,19 @@ $_SESSION['user_id'] = "admin";
     
             <div class="main">
                 <div class="main_function">
-                    <label for="send_push">更新期限一斉通知</label>
-                    <p><button id="send_push" type="submit" onclick="sendPush()">送信</button></p>
+                    <div class="all_license">総数：</div>
+                    <div><?=count($request)?>件</div>
+                </div>
+                
+                <?php for ($i = 0; $i < count($request); $i++): ?>
+                    <div class="request_data">
+                        <div>
+                            <div class="req_c"><?=$request[$i]['request_c']?></div>
+                            <div class="req_url"><?=$request[$i]['request_url']?></div>
+                        </div>
+                        <button class="garbage" onclick="deleteRequest(<?=$request[$i]['request_id']?>)"><img src="../image/garbage.png"/></button>
+                    </div>
+                <?php endfor; ?>
                 </div>
             </div>
         </div>
