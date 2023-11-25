@@ -1,6 +1,5 @@
 <?php
 session_start();
-$_SESSION['user_id'] = "admin";
 
 // データベースに接続
 require_once('../connectDB.php');

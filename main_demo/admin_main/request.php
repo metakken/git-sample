@@ -1,6 +1,5 @@
 <?php
 session_start();
-$_SESSION['user_id'] = "admin";
 
 // データベースに接続
 require_once('../connectDB.php');
@@ -25,7 +24,7 @@ $request = $stmt->fetchAll();
 
     <body>
         <div class="header">
-            <div>LICENSE SQUARE：資格追加・編集</div>
+            <div>LICENSE SQUARE：リクエスト一覧</div>
             <div class="header_icon">
                 <a href="#" class="gear"><img src="../image/gear.png"/></a>
                 <a href="#" class="account"><img src="../image/account.png"/></a>

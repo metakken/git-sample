@@ -28,7 +28,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>メイン画面</title>
+        <title>LICENSE SQUARE：管理者ページ</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../main.css?<?php echo date('Ymd-Hi'); ?>">
         <script type="text/javascript" src="admin_main.js?<?php echo date('Ymd-Hi'); ?>"></script>
