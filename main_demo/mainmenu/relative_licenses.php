@@ -25,7 +25,8 @@
 		}
 		else{
 			$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);    
-			$stmt = $db->prepare("SELECT license_id FROM p_license WHERE user_id=$id");		//ユーザーの全保有資格の資格ＩＤを取得する命令
+			$stmt = $db->prepare("SELECT license_id FROM p_license WHERE user_id=:user_id");		//ユーザーの全保有資格の資格ＩＤを取得する命令
+			$stmt->bindValue(':user_id', $id, PDO::PARAM_STR);
 			$stmt->execute();
 		}
 		$my_all_license = $stmt->fetchall(PDO::FETCH_ASSOC);		//ユーザーの全保有資格の資格ＩＤを$my_all_licenseに代入	
@@ -36,6 +37,7 @@
 	}
 //ユーザーの全保有資格の資格ＩＤ取得終了
 
+	if(count($my_all_license)==0)return;
 
 //ユーザーの全保有資格の資格ＩＤを$all_licenses_held_idに代入(扱いやすい配列にするため)
 	for($cc = 0; $cc <count($my_all_license); $cc++){
@@ -73,7 +75,8 @@
 //ユーザと同じ資格を保有している人の持つ全資格のＩＤを取得
 		try{
 			for($j = 0; $j < count($same_li_user); $j++){
-				$stmt = $db->prepare("SELECT license_id FROM p_license WHERE user_id=$user[$j]");
+				$stmt = $db->prepare("SELECT license_id FROM p_license WHERE user_id=:user_id");
+				$stmt->bindValue(':user_id', $user[$j], PDO::PARAM_STR);
 				$stmt->execute();
 			
 				$relative_license = $stmt->fetchall(PDO::FETCH_ASSOC);

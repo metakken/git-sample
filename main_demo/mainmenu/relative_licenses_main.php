@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>LICENSE SQUARE</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="main.css?<?php echo date('Ymd-Hi'); ?>">
+        <link rel="stylesheet" href="../main.css?<?php echo date('Ymd-Hi'); ?>">
     </head>
 
     <body>
@@ -28,11 +28,12 @@
     
             <div class="main">
             	<div class="main_function">
+                    <div class="all_license">
                     <form action="relative_licenses.php" method="post" class="search-box">
                         <input type="text" placeholder="資格名を入力" name="searcher">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
-                    
+                    </div>
                 </div>
                 <?php include('relative_licenses.php'); ?>
             </div>

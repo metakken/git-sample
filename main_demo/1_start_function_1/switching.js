@@ -8,12 +8,12 @@ document.getElementById("switch").onclick = function(){
 	
 	if(mode.type == 'password'){
 		mode.type = 'text';
-		btn_text.textContent = '非表示';
+		btn_text.className = 'fa fa-eye';
 	}
 	
 	else{
 		mode.type = 'password';
-		btn_text.textContent = '表示';
+		btn_text.className = 'fa fa-eye-slash';
 	}
 	
 }

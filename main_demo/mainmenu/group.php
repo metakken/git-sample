@@ -8,7 +8,8 @@
     	$db = connectDB();
 		$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     
-		$stmt = $db->prepare("SELECT team_id FROM user WHERE user_id='$id'");
+		$stmt = $db->prepare("SELECT team_id FROM user WHERE user_id=:user_id");
+		$stmt->bindValue(':user_id', $id, PDO::PARAM_STR);
 		$stmt->execute();
 		$team_id = $stmt->fetchall(PDO::FETCH_ASSOC);
 	}	
@@ -34,7 +35,8 @@
 			for($j=0; $j<count($teammate); $j++){
 			$counter = 0;
 				try{
-					$stmt = $db->prepare("SELECT license_id FROM p_license WHERE user_id='$teammate[$j]'");
+					$stmt = $db->prepare("SELECT license_id FROM p_license WHERE user_id=:user_id");
+					$stmt->bindValue(':user_id', $teammate[$j], PDO::PARAM_STR);
 					$stmt->execute();
 					$teammate_license_id = $stmt->fetchall(PDO::FETCH_ASSOC);
 					$counter = count($teammate_license_id);
@@ -60,7 +62,8 @@
 				}
 				
 				try{
-					$stmt = $db->prepare("SELECT lastname,firstname FROM user WHERE user_id='$teammate[$j]'");
+					$stmt = $db->prepare("SELECT lastname,firstname FROM user WHERE user_id=:user_id");
+					$stmt->bindValue(':user_id', $teammate[$j], PDO::PARAM_STR);
 					$stmt->execute();
 					$teammate_name = $stmt->fetchall(PDO::FETCH_ASSOC);
 				}	

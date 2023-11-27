@@ -1,5 +1,5 @@
 
-function change_make_group{
+function change_make_group(){
 	let checker;
 	let next;
 	

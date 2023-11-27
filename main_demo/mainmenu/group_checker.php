@@ -8,7 +8,8 @@
     	$db = connectDB();
     	$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     	
-    	$stmt = $db->prepare("SELECT team_id FROM user WHERE user_id=$id");
+    	$stmt = $db->prepare("SELECT team_id FROM user WHERE user_id=:user_id");
+		$stmt->bindValue(':user_id', $id, PDO::PARAM_STR);
 		$stmt->execute();
 		
 		$team_id = $stmt->fetchall(PDO::FETCH_ASSOC);
