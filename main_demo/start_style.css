@@ -3,12 +3,17 @@
     display: flex;
 }
 
-.container .main{
+.main #login{
     position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%,-50%);
   font-size: 100%
+}
+
+.main #makeaccount{
+	position: absolute;
+	left: 35%;
 }
 
 
