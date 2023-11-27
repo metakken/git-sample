@@ -102,7 +102,7 @@ else{
             <div>LICENSE SQUARE : 保有資格登録</div>
             <div class="header_icon">
                 <a href="#" class="gear"><img src="../image/gear.png"/></a>
-                <a href="#" class="account"><img src="../image/account.png"/></a>
+                <a href="../mainmenu/account_menu.php" class="account"><img src="../image/account.png"/></a>
             </div>
         </div>
 
@@ -110,8 +110,8 @@ else{
             <div id="menu">
                 <ul>
                     <li><a href="../main/main.php">保有資格</a></li>
-                    <li><a href="#">関連資格</a></li>
-                    <li><a href="#">資格一覧</a></li>
+                    <li><a href="../mainmenu/relative_licenses_main.php">関連資格</a></li>
+                    <li><a href="../mainmenu/all_license_main.php">資格一覧</a></li>
                     <li><a href="#">資格診断</a></li>
                 </ul>
             </div>

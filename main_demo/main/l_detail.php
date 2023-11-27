@@ -70,7 +70,8 @@
     
             <div class="main">
                 <div class="main_function">
-                    <div class="license_name"><div class="center">資格名：</div><div class="margin_r"><?=$license['li_name']?></div></div>  
+                    <div class="license_name"><div class="center">資格名：</div><div class="margin_r"><?=$license['li_name']?></div></div>
+                    <button id="add" onclick="updateLicense(<?=$license['li_id']?>)">Update</button>
                 </div>
                 <div>
                     <div class="license_detail"><div class="center">取得年月日：</div><div class="margin_r"><?=$p_license['aqs_date']?></div></div>  

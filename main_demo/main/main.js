@@ -12,6 +12,10 @@ function showDetail(li_id){
     window.location.href = '../main/l_detail.php?license='+li_id;
 }
 
+function updateLicense(li_id) {
+    window.location.href = '../main/edit_license.php?license='+li_id;
+}
+
 function showAllDetail(li_id){
     window.location.href = '../main/a_detail.php?license='+li_id;
 }
