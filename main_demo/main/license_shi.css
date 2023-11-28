@@ -1,0 +1,79 @@
+.main {
+    display: flex;
+    padding-top: 10px;
+}
+
+form{
+    width: 40%;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+label{
+    vertical-align: middle; /* テキストを垂直方向に中央揃え */
+    display: inline-block; /* テキストをブロック要素として扱う */
+    margin-left: 20px;
+    font-size: 17px;
+    padding-top: 3px;
+}
+
+#shi{
+    padding: 8px 20px 8px 20px;
+    font-size: 20px;
+    margin-left: 20px;
+    border: solid #dee9f7;
+    border-radius: 8px;
+    background-color: #7ea6e0;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 30px;
+}
+#shi:hover{
+    filter: brightness(0.95);
+}
+#shi:active{
+    filter: brightness(0.8);
+}
+
+.vertical_line {
+    border-left: 1px dotted #313131; /* 縦線のスタイル */
+    height: 95%;
+    margin: 20px 10 0 20px; /* 縦線の左右の余白を設定 */
+}
+
+.right {
+    display: flex;
+    width: 60%;
+    margin-left: auto;
+    flex-direction: column;
+}
+
+.right label{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.license_column{
+    font-size: 17px;
+    display:flex;
+    align-items: center;
+    margin: 10px 50px 0 50px;
+    border-top: 2px solid #555555;
+    border-bottom: 2px solid #555555;
+    background-color: #f4f8fa;
+}
+.all_li_name{
+    padding: 2px 0 0 6px;
+    margin: 2px 0 2px 3px;
+}
+.all_li_div{
+    padding: 2px 0 0 6px;
+    margin: 2px 0 2px 240px;
+}
+.all_li_fi{
+    padding: 2px 0 0 6px;
+    margin: 2px 0 2px 85px;
+}

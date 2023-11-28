@@ -18,6 +18,13 @@
 	}
 		
 	$team = $team_id[0]['team_id'];
+
+	$stmt = $db->prepare("SELECT * FROM team WHERE team_id=:team_id");
+	$stmt->bindValue(':team_id', $team, PDO::PARAM_STR);
+	$stmt->execute();
+	$team_inf = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	echo "<h1>「".$team_inf['team_name']."」グループ</h1></div>";
 	
 	if($team!=0){
 		try{

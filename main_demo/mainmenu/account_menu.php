@@ -22,7 +22,9 @@
                     <li><a href="../main/main.php">保有資格</a></li>
                     <li><a href="../mainmenu/relative_licenses_main.php">関連資格</a></li>
                     <li><a href="../mainmenu/all_license_main.php">資格一覧</a></li>
-                    <li><a href="#">資格診断</a></li>
+                    <li><a href="../main/license_shi.php">資格診断</a></li>
+                    <li><a href="../mainmenu/group_checker.php">グループ</a></li>
+                    <li><a href="../main/request.php">リクエスト送信</a></li>
                 </ul>
             </div>
     
@@ -38,8 +40,6 @@
 				
 				<input type="submit" id="change" value="変更">
 				</form>
-	
-				<button type="button" onclick="location.href='group_checker.php'">グループ機能</button>
                     </div>     
                     
                 </div>

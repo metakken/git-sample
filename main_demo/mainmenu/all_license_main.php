@@ -46,7 +46,9 @@ else {
                     <li><a href="../main/main.php">保有資格</a></li>
                     <li><a href="../mainmenu/relative_licenses_main.php">関連資格</a></li>
                     <li><a href="../mainmenu/all_license_main.php">資格一覧</a></li>
-                    <li><a href="#">資格診断</a></li>
+                    <li><a href="../main/license_shi.php">資格診断</a></li>
+                    <li><a href="../mainmenu/group_checker.php">グループ</a></li>
+                    <li><a href="../main/request.php">リクエスト送信</a></li>
                 </ul>
             </div>
     
@@ -71,7 +73,7 @@ else {
                 </div>
 
                 <div class="license_column">
-                    <div class="li_name">資格名</div>
+                    <div class="all_li_name">資格名</div>
                     <div class="valid_period">有効期間</div>
                     <div class="li_div">資格区分</div>
                     <div class="li_fi">資格分野</div>
