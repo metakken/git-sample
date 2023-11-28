@@ -24,9 +24,11 @@
 	
 	
 	if(!$exist){
-		$stmt = $db->prepare("INSERT INTO team (team_id,team_name,leader_id,password) VALUES ('$group_id','$group_name',$id,'$group_pass')");
+		$stmt = $db->prepare("INSERT INTO team (team_id,team_name,leader_id,password) VALUES ('$group_id','$group_name',:user_id,'$group_pass')");
+		$stmt->bindValue(':user_id', $id, PDO::PARAM_STR);
 		$stmt->execute();
-		$stmt = $db->prepare("UPDATE user SET team_id='$group_id' WHERE user_id='$id'");
+		$stmt = $db->prepare("UPDATE user SET team_id='$group_id' WHERE user_id=:user_id");
+		$stmt->bindValue(':user_id', $id, PDO::PARAM_STR);
 		$stmt->execute();
 		header('Location:group_main.php');
     	exit();
