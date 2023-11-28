@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD']) {
                 </div>
 
                 <div class="license_column">
-                    <div class="li_name">資格名</div>
+                    <div class="all_li_name">資格名</div>
                     <div class="valid_period">有効期間</div>
                     <div class="li_div">資格区分</div>
                     <div class="li_fi">資格分野</div>
